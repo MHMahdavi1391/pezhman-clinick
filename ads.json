@@ -1,0 +1,20 @@
+{
+  "ads": [
+    {
+      "title": "نوروفیدبک پیشرفته",
+      "description": "بهبود تمرکز، اضطراب و اختلالات یادگیری با نوروفیدبک تخصصی",
+      "image": "ads/brain-training.jpg"
+    },
+    {
+      "title": "مشاوره کودک و نوجوان",
+      "description": "با بهترین روش‌های علمی و بازی‌درمانی",
+      "image": "ads/child-therapy.jpg"
+    },
+    {
+      "title": "زوج‌درمانی و خانواده",
+      "description": "حل تعارض‌های زناشویی و تقویت ارتباط موثر",
+      "image": "ads/family-counseling.jpg"
+    }
+  ]
+}
+
