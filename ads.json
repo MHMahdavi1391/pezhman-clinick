@@ -1,0 +1,17 @@
+[
+  {
+    "image": "ads/ad1.jpg",
+    "duration": 5,
+    "link": "https://example.com/ad1"
+  },
+  {
+    "image": "ads/ad2.jpg",
+    "duration": 7,
+    "link": "https://example.com/ad2"
+  },
+  {
+    "image": "ads/ad3.jpg",
+    "duration": 6,
+    "link": "https://example.com/ad3"
+  }
+]

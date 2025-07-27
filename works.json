@@ -1,0 +1,22 @@
+[
+  {
+    "name": "مشاوره فردی",
+    "link": "https://example.com/service/individual"
+  },
+  {
+    "name": "درمان اضطراب و استرس",
+    "link": "https://example.com/service/anxiety"
+  },
+  {
+    "name": "درمان افسردگی",
+    "link": "https://example.com/service/depression"
+  },
+  {
+    "name": "روان‌درمانی کودک و نوجوان",
+    "link": "https://example.com/service/child"
+  },
+  {
+    "name": "نوروتراپی تخصصی",
+    "link": "https://example.com/service/neurotherapy"
+  }
+]
