@@ -12,16 +12,22 @@
   <meta name="robots" content="index, follow" />
 
   <style>
+    :root {
+      --primary: #00bcd4; /* آبی فیروزه‌ای */
+      --accent1: #fff176; /* لیمویی */
+      --accent2: #ce93d8; /* یاسی */
+    }
+
     body {
       font-family: Tahoma, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
+      background: #fdfdfd;
       color: #333;
     }
 
     header {
-      background: #004d99;
+      background: var(--primary);
       color: white;
       padding: 15px 10px;
       text-align: center;
@@ -33,7 +39,7 @@
       width: 100%;
       height: 180px;
       overflow: hidden;
-      background: #ddd;
+      background: #e0f7fa;
       margin-bottom: 25px;
     }
 
@@ -51,42 +57,50 @@
 
     main {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: row-reverse;
       gap: 20px;
       padding: 0 20px 30px 20px;
       max-width: 1200px;
       margin: 0 auto;
     }
 
-    .right-lists {
+    .right-column {
       width: 50%;
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    .list-container, .left-list {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      overflow-y: auto;
+    .left-column {
+      width: 50%;
     }
 
     .list-container {
+      background: white;
+      padding: 15px;
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      overflow-y: auto;
       height: 300px;
     }
 
     .left-list {
-      width: 50%;
+      background: white;
+      padding: 15px;
+      border: 2px solid var(--accent2);
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      overflow-y: auto;
       height: 630px;
     }
 
-    .list-container h3, .left-list h3 {
+    .list-container h3,
+    .left-list h3 {
       margin-top: 0;
       margin-bottom: 12px;
-      border-bottom: 2px solid #004d99;
-      color: #004d99;
+      border-bottom: 2px solid var(--primary);
+      color: var(--primary);
       padding-bottom: 4px;
     }
 
@@ -103,15 +117,15 @@
 
     ul li a {
       text-decoration: none;
-      color: #222;
+      color: #333;
     }
 
     ul li a:hover {
-      color: #0073e6;
+      color: var(--accent1);
     }
 
     footer {
-      background: #004d99;
+      background: var(--primary);
       color: white;
       text-align: center;
       padding: 18px 10px;
@@ -119,7 +133,7 @@
     }
 
     footer a {
-      color: #ffcc00;
+      color: var(--accent1);
       text-decoration: none;
       font-weight: bold;
     }
@@ -129,13 +143,18 @@
         flex-direction: column;
       }
 
-      .right-lists, .left-list {
+      .right-column,
+      .left-column {
         width: 100%;
-        height: auto;
       }
 
       #banner {
         height: 140px;
+      }
+
+      .left-list,
+      .list-container {
+        height: auto;
       }
     }
   </style>
@@ -150,7 +169,7 @@
 <div id="banner"></div>
 
 <main>
-  <div class="right-lists">
+  <div class="right-column">
     <section class="list-container" id="services">
       <h3>خدمات</h3>
       <ul></ul>
@@ -161,10 +180,12 @@
     </section>
   </div>
 
-  <section class="left-list" id="magazines">
-    <h3>مجلات</h3>
-    <ul></ul>
-  </section>
+  <div class="left-column">
+    <section class="left-list" id="magazines">
+      <h3>مجلات</h3>
+      <ul></ul>
+    </section>
+  </div>
 </main>
 
 <footer>
@@ -217,7 +238,7 @@
     }
   }
 
-  // شروع بارگذاری
+  // اجرا
   loadBanner();
   loadList('services', 'works.json');
   loadList('colleagues', 'colleagues.json');
