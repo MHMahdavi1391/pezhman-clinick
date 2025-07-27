@@ -37,13 +37,14 @@
 
     #banner {
       width: 100%;
-      max-width: 1700px;
+      max-width: 1200px; /* این مقدار اولیه است */
       height: 350px;
       margin: 0 auto 25px auto;
       background: #e0f7fa;
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: max-width 0.3s ease;
     }
 
     #banner img {
@@ -160,7 +161,7 @@
 
       #banner {
         height: 220px;
-        max-width: 100%;
+        max-width: 100% !important;
       }
     }
   </style>
@@ -200,6 +201,25 @@
 </footer>
 
 <script>
+  function resizeBanner() {
+    const banner = document.getElementById('banner');
+    const currentWidth = banner.offsetWidth;
+    const newWidth = (currentWidth / 2) * 3; // فرمول تو: عرض فعلی تقسیم بر 2 و ضربدر 3
+    const maxAllowedWidth = window.innerWidth;
+
+    banner.style.maxWidth = Math.min(newWidth, maxAllowedWidth) + 'px';
+  }
+
+  window.addEventListener('load', () => {
+    resizeBanner();
+    loadBanner();
+    loadList('services', 'works.json');
+    loadList('colleagues', 'colleagues.json');
+    loadList('magazines', 'magesins.json');
+  });
+
+  window.addEventListener('resize', resizeBanner);
+
   async function loadBanner() {
     try {
       const res = await fetch('ads.json');
@@ -243,11 +263,6 @@
       console.error(`خطا در بارگذاری ${id}:`, err);
     }
   }
-
-  loadBanner();
-  loadList('services', 'works.json');
-  loadList('colleagues', 'colleagues.json');
-  loadList('magazines', 'magesins.json');
 </script>
 
 </body>
