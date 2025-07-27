@@ -1,16 +1,11 @@
 [
   {
-    "image": "ads/ad1.jpg",
-    "duration": 5,
-    "link": "https://example.com/ad1"
-  },
-  {
-    "image": "ads/ad2.jpg",
+    "image": "photo_2025-07-27_22-10-39.jpg",
     "duration": 7,
     "link": "https://example.com/ad2"
   },
   {
-    "image": "ads/ad3.jpg",
+    "image": "photo_2025-07-27_22-10-44.jpg",
     "duration": 6,
     "link": "https://example.com/ad3"
   }
