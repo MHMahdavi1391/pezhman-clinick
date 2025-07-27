@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مرکز رواندرمانی و نوروتراپی دکتر پژمان</title>
+
+  <!-- SEO -->
+  <meta name="description" content="مرکز تخصصی رواندرمانی و نوروتراپی دکتر پژمان با خدمات متنوع، تیم حرفه‌ای و محتوای علمی در مجلات معتبر." />
+  <meta name="keywords" content="رواندرمانی, نوروتراپی, سلامت روان, درمان افسردگی, درمان اضطراب, مشاوره فردی, کودک, دکتر پژمان" />
+  <meta name="author" content="دکتر پژمان" />
+  <meta name="robots" content="index, follow" />
+
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: #004d99;
+      color: white;
+      padding: 15px 10px;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    #banner {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background: #ddd;
+      margin-bottom: 25px;
+    }
+
+    #banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    #banner img:hover {
+      transform: scale(1.05);
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 0 20px 30px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .right-lists {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .list-container, .left-list {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+
+    .list-container {
+      height: 300px;
+    }
+
+    .left-list {
+      width: 50%;
+      height: 630px;
+    }
+
+    .list-container h3, .left-list h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #004d99;
+      color: #004d99;
+      padding-bottom: 4px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul li {
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: #222;
+    }
+
+    ul li a:hover {
+      color: #0073e6;
+    }
+
+    footer {
+      background: #004d99;
+      color: white;
+      text-align: center;
+      padding: 18px 10px;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+
+      .right-lists, .left-list {
+        width: 100%;
+        height: auto;
+      }
+
+      #banner {
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  مرکز رواندرمانی و نوروتراپی دکتر پژمان
+</header>
+
+<div id="banner"></div>
+
+<main>
+  <div class="right-lists">
+    <section class="list-container" id="services">
+      <h3>خدمات</h3>
+      <ul></ul>
+    </section>
+    <section class="list-container" id="colleagues">
+      <h3>همکاران</h3>
+      <ul></ul>
+    </section>
+  </div>
+
+  <section class="left-list" id="magazines">
+    <h3>مجلات</h3>
+    <ul></ul>
+  </section>
+</main>
+
+<footer>
+  &copy; تمامی حقوق محفوظ است | ساخت شرکت <strong>DNI CO.</strong> |
+  <a href="https://mhmahdavi1391.github.io/DNI-CO" target="_blank">مشاهده</a>
+</footer>
+
+<script>
+  async function loadBanner() {
+    try {
+      const res = await fetch('ads.json');
+      const ads = await res.json();
+      if (!ads.length) return;
+
+      let currentIndex = 0;
+      const bannerDiv = document.getElementById('banner');
+
+      function showAd(index) {
+        const ad = ads[index];
+        bannerDiv.innerHTML = `<a href="${ad.link}" target="_blank">
+          <img src="${ad.image}" alt="تبلیغ" />
+        </a>`;
+        setTimeout(() => {
+          currentIndex = (currentIndex + 1) % ads.length;
+          showAd(currentIndex);
+        }, ad.duration * 1000);
+      }
+
+      showAd(currentIndex);
+    } catch (err) {
+      console.error('خطا در بارگذاری بنر:', err);
+    }
+  }
+
+  async function loadList(id, file) {
+    try {
+      const res = await fetch(file);
+      const items = await res.json();
+      const ul = document.querySelector(`#${id} ul`);
+      ul.innerHTML = '';
+      items.forEach(item => {
+        const text = item.name || item.title || 'بدون عنوان';
+        const link = item.link || '#';
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="${link}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+        ul.appendChild(li);
+      });
+    } catch (err) {
+      console.error(`خطا در بارگذاری ${id}:`, err);
+    }
+  }
+
+  // شروع بارگذاری
+  loadBanner();
+  loadList('services', 'works.json');
+  loadList('colleagues', 'colleagues.json');
+  loadList('magazines', 'magesins.json');
+</script>
+
+</body>
+</html>
